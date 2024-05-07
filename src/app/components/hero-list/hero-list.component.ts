@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { HeroesService } from '../../services/heroes.service';
 import { Router } from '@angular/router';
+import { Hero } from '../../schemas/hero.interface';
 
 @Component({
   selector: 'app-hero-list',
@@ -66,7 +67,15 @@ export class HeroListComponent implements OnInit {
   confirmDelete(): void {
     if (this.selectedHeroId != null) {
       this.heroService.deleteHero(this.selectedHeroId).subscribe(() => {
-        this.loadHeroes();
+        const heroesAfterDelete = this.heroes.filter(
+          (hero: Hero) => hero.id !== this.selectedHeroId
+        );
+        this.heroes = heroesAfterDelete;
+        this.totalPages = Math.ceil(this.heroes.length / this.heroesPerPage);
+        if (this.currentPage > this.totalPages) {
+          this.currentPage = this.totalPages;
+        }
+        this.changePage(this.currentPage);
         this.closeDeleteModal();
       });
     }

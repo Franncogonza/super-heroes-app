@@ -35,6 +35,6 @@ export class AddHeroComponent {
   }
 
   onBack(): void {
-    this.router.navigate(['/Heroes']);
+    this.router.navigate(['/heroes']);
   }
 }
