@@ -28,9 +28,9 @@ export class EditHeroComponent implements OnInit {
     this.heroId = parseInt(this.route.snapshot.params['id'], 10);
     this.heroService.getHero(this.heroId).subscribe((hero) => {
       this.heroForm.setValue({
-        name: hero.name,
-        description: hero.description,
-        image: hero.image,
+        name: hero?.name,
+        description: hero?.description,
+        image: hero?.image,
       });
     });
   }

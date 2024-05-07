@@ -1,26 +1,25 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Hero } from '../schemas/hero.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HeroesService {
-  private currentHero = new BehaviorSubject<any>(null);
   private apiUrl = 'assets/heroes.json';
-  private heroesCache!: any[];
+  private heroesCache!: Hero[];
+  private http = inject(HttpClient);
 
-  constructor(private http: HttpClient) {}
-
-  getHeroes(): Observable<any[]> {
+  getHeroes(): Observable<Hero[]> {
     if (this.heroesCache) {
       return new Observable((observer) => {
         observer.next(this.heroesCache);
         observer.complete();
       });
     } else {
-      return this.http.get<{ superheroes: any[] }>(this.apiUrl).pipe(
+      return this.http.get<{ superheroes: Hero[] }>(this.apiUrl).pipe(
         map((response) => {
           this.heroesCache = response.superheroes;
           return this.heroesCache;
@@ -29,14 +28,24 @@ export class HeroesService {
     }
   }
 
-  getHero(id: number): Observable<any> {
+  searchHero(term: string): Observable<Hero[]> {
+    return this.getHeroes().pipe(
+      map((heroes) =>
+        heroes.filter((hero) =>
+          hero.name.toLowerCase().includes(term.toLowerCase())
+        )
+      )
+    );
+  }
+
+  getHero(id: number): Observable<Hero | undefined> {
     return this.getHeroes().pipe(
       map((heroes) => heroes.find((hero) => hero.id === id))
     );
   }
 
   createHero(hero: any): Observable<any> {
-    hero.id = this.heroesCache.length + 1; // Simula la creación del ID
+    hero.id = this.heroesCache.length + 1;
     this.heroesCache.push(hero);
     return new Observable((observer) => {
       observer.next(hero);

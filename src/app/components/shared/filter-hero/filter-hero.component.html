@@ -1,0 +1,35 @@
+<div class="container mt-3">
+  <!-- Mensaje indicando la cantidad de héroes encontrados -->
+  <div *ngIf="heroes.length > 0; else noHeroesTemplate">
+    <p class="alert alert-info">
+      Se han encontrado {{ heroes.length }} héroes.
+    </p>
+
+    <!-- Lista de héroes -->
+    <div class="row">
+      <div *ngFor="let hero of heroes; let i = index" class="col-md-4 mb-3">
+        <div class="card">
+          <img
+            src="{{ hero.image }}"
+            class="card-img-top"
+            alt="Imagen de {{ hero.name }}"
+          />
+          <div class="card-body">
+            <h5 class="card-title">{{ hero.name }}</h5>
+            <p class="card-text">
+              {{ hero.description || "No hay descripción disponible." }}
+            </p>
+            <a class="btn btn-primary" (click)="goTo(hero)">Más detalles</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Template alternativo cuando no hay héroes -->
+  <ng-template #noHeroesTemplate>
+    <div class="alert alert-warning">
+      No se encontraron héroes para el término '{{ term }}'.
+    </div>
+  </ng-template>
+</div>

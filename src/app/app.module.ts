@@ -17,6 +17,7 @@ import { UppercaseDirective } from './directives/uppercase.directive';
 import { LoadingInterceptor } from './interceptors/loading-interceptor.interceptor';
 import { HomeComponent } from './components/home/home.component';
 import { HeroeComponent } from './components/heroe-detail/heroe.component';
+import { FilterHeroComponent } from './components/shared/filter-hero/filter-hero.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { HeroeComponent } from './components/heroe-detail/heroe.component';
     ConfirmModalComponent,
     UppercaseDirective,
     HeroeComponent,
+    FilterHeroComponent,
   ],
   imports: [
     BrowserModule,

@@ -5,6 +5,7 @@ import { AddHeroComponent } from './components/add-hero/add-hero.component';
 import { EditHeroComponent } from './components/edit-hero/edit-hero.component';
 import { HeroeComponent } from './components/heroe-detail/heroe.component';
 import { HomeComponent } from './components/home/home.component';
+import { FilterHeroComponent } from './components/shared/filter-hero/filter-hero.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'heroe/:id', component: HeroeComponent },
   { path: 'add-hero', component: AddHeroComponent },
   { path: 'edit-hero/:id', component: EditHeroComponent },
+  { path: 'filter/:term', component: FilterHeroComponent },
 ];
 
 @NgModule({

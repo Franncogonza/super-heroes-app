@@ -1,6 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HeroesService } from '../../services/heroes.service';
+import { Hero } from '../../schemas/hero.interface';
 
 @Component({
   selector: 'app-heroe',
@@ -9,7 +10,7 @@ import { HeroesService } from '../../services/heroes.service';
 export class HeroeComponent implements OnInit {
   pageTitle = 'Heroe Detail';
   errorMessage = '';
-  heroe: any | undefined;
+  heroe: Hero | undefined;
 
   private activatedRoute = inject(ActivatedRoute);
   private router = inject(Router);

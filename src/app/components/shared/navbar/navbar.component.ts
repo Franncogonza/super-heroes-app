@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Hero } from '../../../schemas/hero.interface';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -10,10 +11,10 @@ export class NavbarComponent {
   heroes: Hero[] = [];
   filteredHeroes: Hero[] = [];
 
+  private router = inject(Router);
+
   searchHero(searchText: string) {
     console.log(searchText);
-    this.filteredHeroes = this.heroes.filter((hero) =>
-      hero.name.toLowerCase().includes(searchText.toLowerCase())
-    );
+    this.router.navigate(['/filter', searchText]);
   }
 }
