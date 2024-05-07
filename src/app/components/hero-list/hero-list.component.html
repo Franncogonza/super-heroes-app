@@ -1,0 +1,108 @@
+<div class="container">
+  <div class="row">
+    <!-- Mensaje cuando no hay héroes -->
+    <ng-container *ngIf="heroes.length === 0">
+      <div class="col-12">
+        <div class="alert alert-info my-3">
+          No hay héroes disponibles. ¿Por qué no añades uno?
+        </div>
+        <button class="btn btn-primary mb-4" (click)="showAddHero()">
+          Agregar Héroe
+        </button>
+      </div>
+    </ng-container>
+
+    <div class="col-12 text-center pt-3 pb-3">
+      <button class="btn btn-success" (click)="showAddHero()">
+        Añadir Nuevo Héroe
+      </button>
+    </div>
+
+    <!-- Lista de héroes -->
+    <div class="row">
+      <div
+        *ngFor="
+          let heroe of paginatedHeroes;
+          trackBy: trackByIndex;
+          let i = index
+        "
+        class="col-lg-4 col-md-6 col-12 mb-4"
+      >
+        <div class="card h-100 d-flex flex-column">
+          <img [src]="heroe.image" class="card-img-top" alt="heroe.name" />
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">{{ heroe.name }}</h5>
+            <p class="card-text">{{ heroe.description }}</p>
+            <div class="mt-auto d-flex flex-wrap">
+              <button
+                class="btn btn-primary me-md-2 mb-2 mb-md-0 flex-grow-1 m-2"
+                (click)="goTo(heroe)"
+              >
+                Ver
+              </button>
+              <button
+                class="btn btn-success me-md-2 mb-2 mb-md-0 flex-grow-1 m-2"
+                (click)="goToEditHero(heroe)"
+              >
+                Editar
+              </button>
+              <button
+                class="btn btn-danger me-md-2 mb-2 mb-md-0 flex-grow-1 m-2"
+                (click)="openDeleteModal(heroe.id)"
+              >
+                Borrar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-footer mt-3 text-center">
+    <button
+      class="btn btn-outline-secondary"
+      style="min-width: 100px"
+      (click)="onBack()"
+    >
+      Back
+    </button>
+  </div>
+</div>
+
+<app-confirm-modal
+  class="mt-3"
+  *ngIf="showModal"
+  (onConfirm)="confirmDelete()"
+  (onClose)="closeDeleteModal()"
+></app-confirm-modal>
+
+<nav aria-label="Page navigation example" *ngIf="totalPages > 1">
+  <ul class="pagination">
+    <li class="page-item" [class.disabled]="currentPage === 1">
+      <button
+        class="page-link"
+        (click)="changePage(currentPage - 1)"
+        [disabled]="currentPage === 1"
+      >
+        Anterior
+      </button>
+    </li>
+    <li
+      class="page-item"
+      *ngFor="let page of [].constructor(totalPages); let i = index"
+      [class.active]="currentPage === i + 1"
+    >
+      <button class="page-link" (click)="changePage(i + 1)">{{ i + 1 }}</button>
+    </li>
+    <li class="page-item" [class.disabled]="currentPage === totalPages">
+      <button
+        class="page-link"
+        (click)="changePage(currentPage + 1)"
+        [disabled]="currentPage === totalPages"
+      >
+        Siguiente
+      </button>
+    </li>
+  </ul>
+</nav>

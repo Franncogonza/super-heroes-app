@@ -1,0 +1,47 @@
+<div class="container">
+  <h2>Editar Héroe</h2>
+  <form [formGroup]="heroForm" (ngSubmit)="saveHero()">
+    <div class="mb-3">
+      <label for="name" class="form-label">Nombre:</label>
+      <input
+        type="text"
+        id="name"
+        formControlName="name"
+        class="form-control"
+        required
+        appUppercase
+      />
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Descripción:</label>
+      <textarea
+        id="description"
+        formControlName="description"
+        class="form-control"
+        required
+      ></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="image" class="form-label">Imagen URL:</label>
+      <input
+        type="text"
+        id="image"
+        formControlName="image"
+        class="form-control"
+        required
+      />
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!heroForm.valid">
+      Guardar Cambios
+    </button>
+    <div class="card-footer mt-3 text-center">
+      <button
+        class="btn btn-outline-secondary"
+        style="min-width: 100px"
+        (click)="onBack()"
+      >
+        Back
+      </button>
+    </div>
+  </form>
+</div>

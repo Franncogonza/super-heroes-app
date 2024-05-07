@@ -1,0 +1,124 @@
+{
+  "superheroes": [
+    {
+      "id": 1,
+      "name": "Superman",
+      "description": "Superman es un superhéroe que posee superfuerteza, vuelo y varios otros poderes sobrehumanos. Es uno de los más icónicos y poderosos superhéroes de DC Comics.",
+      "image": "https://material.angular.io/assets/img/examples/shiba2.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Wonder Woman",
+      "description": "Wonder Woman es una guerrera amazona con habilidades de combate sobresalientes, velocidad y vuelo. Es conocida como un símbolo de justicia, igualdad y fuerza.",
+      "image": "https://material.angular.io/assets/img/examples/shiba2.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Batman",
+      "description": "Batman es un vigilante enmascarado que lucha contra el crimen en Gotham City usando su inteligencia, habilidades de combate y una variedad de tecnologías avanzadas.",
+      "image": "https://material.angular.io/assets/img/examples/shiba2.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Spider-Man",
+      "description": "Spider-Man es un superhéroe que posee habilidades arácnidas, lo que le permite trepar muros, liberar telarañas y tener un sentido arácnido que le advierte de peligros inminentes.",
+      "image": "https://material.angular.io/assets/img/examples/shiba2.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Iron Man",
+      "description": "Iron Man es un superhéroe que utiliza un traje de armadura tecnológicamente avanzado que le proporciona fuerza sobrehumana, vuelo, y un arsenal de armas.",
+      "image": "https://material.angular.io/assets/img/examples/shiba2.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Thor",
+      "description": "Thor es un superhéroe basado en el dios nórdico del mismo nombre. Es conocido por su fuerza sobrehumana, control del clima y su martillo mágico, Mjolnir.",
+      "image": "https://material.angular.io/assets/img/examples/shiba2.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Hulk",
+      "description": "Hulk es el alter ego de Bruce Banner, un científico que se transforma en un monstruo verde gigante bajo estrés emocional. Posee fuerza increíble y capacidad regenerativa.",
+      "image": "https://material.angular.io/assets/img/examples/shiba2.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Black Widow",
+      "description": "Black Widow, también conocida como Natasha Romanoff, es una ex espía y asesina, y miembro de los Avengers. Es excepcionalmente hábil en combate cuerpo a cuerpo y tácticas de espionaje.",
+      "image": "https://material.angular.io/assets/img/examples/shiba2.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Captain America",
+      "description": "Captain America, cuyo nombre real es Steve Rogers, es un superhéroe patriótico que lucha usando su fuerza sobrehumana y un escudo indestructible.",
+      "image": "https://material.angular.io/assets/img/examples/shiba2.jpg"
+    },
+    {
+      "id": 10,
+      "name": "Aquaman",
+      "description": "Aquaman es el gobernante de Atlantis y el rey de los océanos. Posee la capacidad de comunicarse con la vida marina y es extremadamente fuerte y resistente.",
+      "image": "https://material.angular.io/assets/img/examples/shiba2.jpg"
+    },
+    {
+      "id": 11,
+      "name": "Green Lantern",
+      "description": "Green Lantern es un miembro de la Green Lantern Corps, una fuerza policial intergaláctica. Utiliza un anillo de poder que le otorga la capacidad de crear manifestaciones de luz sólida.",
+      "image": "https://material.angular.io/assets/img/examples/shiba2.jpg"
+    },
+    {
+      "id": 12,
+      "name": "Flash",
+      "description": "Flash es un superhéroe con la capacidad de correr a velocidades sobrehumanas. Es conocido como el hombre más rápido del mundo y protege Central City de todo tipo de amenazas.",
+      "image": "https://material.angular.io/assets/img/examples/shiba2.jpg"
+    },
+    {
+      "id": 13,
+      "name": "Doctor Strange",
+      "description": "Doctor Strange es un hechicero maestro en las artes místicas. Protege al mundo de las amenazas místicas usando su conocimiento de la magia y sus poderosos artefactos.",
+      "image": "https://material.angular.io/assets/img/examples/shiba2.jpg"
+    },
+    {
+      "id": 14,
+      "name": "Wolverine",
+      "description": "Wolverine es un mutante con habilidades regenerativas, sentidos agudizados y garras retráctiles de adamantium. Es un miembro prominente de los X-Men.",
+      "image": "https://material.angular.io/assets/img/examples/shiba2.jpg"
+    },
+    {
+      "id": 15,
+      "name": "Green Arrow",
+      "description": "Green Arrow, también conocido como Oliver Queen, es un habilidoso arquero y luchador cuerpo a cuerpo. Utiliza su destreza con el arco y la flecha para luchar contra el crimen en Star City.",
+      "image": "https://material.angular.io/assets/img/examples/shiba2.jpg"
+    },
+    {
+      "id": 16,
+      "name": "Black Panther",
+      "description": "Black Panther, cuyo nombre real es T'Challa, es el rey de la nación africana de Wakanda. Posee habilidades mejoradas físicamente y utiliza un traje hecho de vibranium, un metal indestructible.",
+      "image": "https://material.angular.io/assets/img/examples/shiba2.jpg"
+    },
+    {
+      "id": 17,
+      "name": "Captain Marvel",
+      "description": "Captain Marvel, también conocida como Carol Danvers, es una heroína con habilidades de vuelo, fuerza sobrehumana y la capacidad de disparar explosiones de energía desde sus manos.",
+      "image": "https://material.angular.io/assets/img/examples/shiba2.jpg"
+    },
+    {
+      "id": 18,
+      "name": "The Flash",
+      "description": "The Flash es otro nombre para el héroe conocido como Flash. Tiene la habilidad de correr a velocidades increíbles, lo que le permite viajar en el tiempo y cruzar dimensiones.",
+      "image": "https://material.angular.io/assets/img/examples/shiba2.jpg"
+    },
+    {
+      "id": 19,
+      "name": "Ant-Man",
+      "description": "Ant-Man, cuyo nombre real es Scott Lang, es un superhéroe que puede cambiar de tamaño, haciéndose muy pequeño o gigantesco. Utiliza un traje especial y tiene un compañero, una hormiga gigante llamada Ant-Thony.",
+      "image": "https://material.angular.io/assets/img/examples/shiba2.jpg"
+    },
+    {
+      "id": 20,
+      "name": "Vision",
+      "description": "Vision es un androide sintético creado por Ultron, pero más tarde se une a los Avengers. Tiene una variedad de habilidades, incluida la densidad variable y la capacidad de volar.",
+      "image": "https://material.angular.io/assets/img/examples/shiba2.jpg"
+    }
+  ]
+}
