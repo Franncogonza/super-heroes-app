@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class NavbarComponent {
   private router = inject(Router);
 
-  searchHero(searchText: string) {
-    this.router.navigate(['/heroes', searchText]);
+  searchHero(searchTerm: string) {
+    this.router.navigate(['/heroes', { term: searchTerm }]);
   }
 }

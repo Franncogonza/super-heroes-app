@@ -61,7 +61,7 @@ export class EditHeroComponent implements OnInit, OnDestroy {
   }
 
   onBack(): void {
-    this.router.navigate(['/Heroes']);
+    this.router.navigate(['/heroes']);
   }
 
   ngOnDestroy(): void {

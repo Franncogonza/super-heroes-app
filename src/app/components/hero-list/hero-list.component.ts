@@ -70,24 +70,19 @@ export class HeroListComponent implements OnInit, OnDestroy {
     });
   }
 
-  editHero(heroe: Hero): void {
-    this.router.navigate(['/edit-heroe', heroe.id]);
-  }
-
   showAddHero(): void {
-    this.router.navigate(['/add-hero']);
+    this.router.navigate(['heroes/add']);
   }
 
   handleViewHero(heroe: Hero): void {
-    this.router.navigate(['/heroe', heroe.id]);
+    this.router.navigate(['/heroes', heroe.id]);
   }
 
   handleEditHero(heroe: Hero): void {
-    this.router.navigate(['/edit-hero', heroe.id]);
+    this.router.navigate(['/heroes/edit', heroe.id]);
   }
 
-  handleDeleteHero(heroe: Hero) {
-    console.log('heroe', heroe);
+  handleDeleteHero(heroe: Hero): void {
     this.openDeleteModal(heroe.id);
   }
 
