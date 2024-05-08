@@ -69,7 +69,7 @@ describe('HeroesService', () => {
   });
 
   it('should update a hero via PUT request', () => {
-    const updatedHero = { id: 1, name: 'Iron Man' };
+    const updatedHero = { id: 1, name: 'Iron Man', description: 'Genius, billionaire, playboy, philanthropist', image: 'iron-man.jpg' };
 
     service.updateHero(updatedHero).subscribe((hero) => {
       expect(hero).toEqual(updatedHero);
@@ -91,6 +91,7 @@ describe('HeroesService', () => {
     expect(req.request.method).toBe('GET');
     req.flush({ superheroes: [] });
   });
+
 
   it('should add a hero via POST request', () => {
     const newHero = { name: 'Thor' };

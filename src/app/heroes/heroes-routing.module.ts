@@ -1,5 +1,3 @@
-// heroes-routing.module.ts
-
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AddHeroComponent } from '../components/add-hero/add-hero.component';
