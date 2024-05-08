@@ -5,18 +5,26 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class LoadingService {
-  private loading = new BehaviorSubject<boolean>(false);
+  private loadingCount = 0;
+  private loadingSubject = new BehaviorSubject<boolean>(false);
 
-  show(): void {
-    console.log('Show loading');
-    this.loading.next(true);
+  constructor() {}
+
+  show() {
+    // Incrementa el contador y si es la primera solicitud activa, emite verdadero.
+    if (++this.loadingCount === 1) {
+      this.loadingSubject.next(true);
+    }
   }
 
-  hide(): void {
-    console.log('Hide loading');
-    this.loading.next(false);
+  hide() {
+    // Decrementa el contador y si ya no hay solicitudes activas, emite falso.
+    if (--this.loadingCount === 0) {
+      this.loadingSubject.next(false);
+    }
   }
+
   isLoading(): Observable<boolean> {
-    return this.loading.asObservable();
+    return this.loadingSubject.asObservable();
   }
 }

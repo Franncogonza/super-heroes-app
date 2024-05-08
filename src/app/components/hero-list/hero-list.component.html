@@ -29,10 +29,10 @@
         class="col-lg-4 col-md-6 col-12 mb-4"
       >
         <div class="card h-100 d-flex flex-column">
-          <img [src]="heroe.image" class="card-img-top" alt="heroe.name" />
+          <img [src]="heroe?.image" class="card-img-top" alt="heroe?.name" />
           <div class="card-body d-flex flex-column">
-            <h5 class="card-title">{{ heroe.name }}</h5>
-            <p class="card-text">{{ heroe.description }}</p>
+            <h5 class="card-title">{{ heroe?.name }}</h5>
+            <p class="card-text">{{ heroe?.description }}</p>
             <div class="mt-auto d-flex flex-wrap">
               <button
                 class="btn btn-primary me-md-2 mb-2 mb-md-0 flex-grow-1 m-2"
@@ -77,32 +77,36 @@
   (onClose)="closeDeleteModal()"
 ></app-confirm-modal>
 
-<nav aria-label="Page navigation example" *ngIf="totalPages > 1">
-  <ul class="pagination">
-    <li class="page-item" [class.disabled]="currentPage === 1">
-      <button
-        class="page-link"
-        (click)="changePage(currentPage - 1)"
-        [disabled]="currentPage === 1"
+<ng-container *ngIf="totalPages > 1">
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item" [class.disabled]="currentPage === 1">
+        <button
+          class="page-link"
+          (click)="changePage(currentPage - 1)"
+          [disabled]="currentPage === 1"
+        >
+          Anterior
+        </button>
+      </li>
+      <li
+        class="page-item"
+        *ngFor="let page of [].constructor(totalPages); let i = index"
+        [class.active]="currentPage === i + 1"
       >
-        Anterior
-      </button>
-    </li>
-    <li
-      class="page-item"
-      *ngFor="let page of [].constructor(totalPages); let i = index"
-      [class.active]="currentPage === i + 1"
-    >
-      <button class="page-link" (click)="changePage(i + 1)">{{ i + 1 }}</button>
-    </li>
-    <li class="page-item" [class.disabled]="currentPage === totalPages">
-      <button
-        class="page-link"
-        (click)="changePage(currentPage + 1)"
-        [disabled]="currentPage === totalPages"
-      >
-        Siguiente
-      </button>
-    </li>
-  </ul>
-</nav>
+        <button class="page-link" (click)="changePage(i + 1)">
+          {{ i + 1 }}
+        </button>
+      </li>
+      <li class="page-item" [class.disabled]="currentPage === totalPages">
+        <button
+          class="page-link"
+          (click)="changePage(currentPage + 1)"
+          [disabled]="currentPage === totalPages"
+        >
+          Siguiente
+        </button>
+      </li>
+    </ul>
+  </nav>
+</ng-container>

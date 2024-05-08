@@ -9,10 +9,10 @@ import { Hero } from '../../schemas/hero.interface';
   styleUrls: ['./hero-list.component.scss'],
 })
 export class HeroListComponent implements OnInit {
-  heroes: any = [];
+  heroes: Hero[] = [];
   showModal = false;
   selectedHeroId: number | null = null;
-  paginatedHeroes: any = [];
+  paginatedHeroes: Hero[] = [];
   currentPage = 1;
   heroesPerPage = 6;
   totalPages = 1;
@@ -26,7 +26,7 @@ export class HeroListComponent implements OnInit {
 
   loadHeroes(): void {
     this.heroService.getHeroes().subscribe({
-      next: (heroes) => {
+      next: (heroes: Hero[]) => {
         this.heroes = heroes;
         this.totalPages = Math.ceil(heroes.length / this.heroesPerPage);
         this.changePage(this.currentPage);
@@ -35,11 +35,11 @@ export class HeroListComponent implements OnInit {
     });
   }
 
-  goTo(heroe: any): void {
+  goTo(heroe: Hero): void {
     this.router.navigate(['/heroe', heroe.id]);
   }
 
-  editHero(heroe: any): void {
+  editHero(heroe: Hero): void {
     this.router.navigate(['/edit-heroe', heroe.id]);
   }
 
@@ -47,12 +47,8 @@ export class HeroListComponent implements OnInit {
     this.router.navigate(['/add-hero']);
   }
 
-  goToEditHero(hero: any): void {
+  goToEditHero(hero: Hero): void {
     this.router.navigate(['/edit-hero', hero.id]);
-  }
-
-  onBack(): void {
-    this.router.navigate(['/home']);
   }
 
   openDeleteModal(id: number): void {
@@ -79,6 +75,10 @@ export class HeroListComponent implements OnInit {
         this.closeDeleteModal();
       });
     }
+  }
+
+  onBack(): void {
+    this.router.navigate(['/home']);
   }
 
   changePage(page: number): void {

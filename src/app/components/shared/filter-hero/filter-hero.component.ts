@@ -20,7 +20,6 @@ export class FilterHeroComponent implements OnInit, OnDestroy {
     this.routeSub = this.activatedRoute.params.subscribe((params) => {
       const term = params['term'];
       if (term) {
-        console.log(term);
         this.term = term;
         this.searchHeroes(term);
       }

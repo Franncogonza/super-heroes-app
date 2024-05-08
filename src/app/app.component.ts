@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Observable } from 'rxjs/internal/Observable';
+import { Component, ChangeDetectorRef, AfterViewInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { LoadingService } from './services/loading.service';
 
 @Component({
@@ -7,20 +7,19 @@ import { LoadingService } from './services/loading.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
-  public username = 'Franco David Gonzalez';
-  public study = 'Analista de Sistemas';
-  public developWork =
-    'Frontend | Angular Developer | TypeScript | Ionic | NodeJs';
+export class AppComponent implements AfterViewInit {
   isLoading: Observable<boolean>;
 
-  constructor(private loadingService: LoadingService) {
+  constructor(
+    private loadingService: LoadingService,
+    private cdRef: ChangeDetectorRef
+  ) {
     this.isLoading = this.loadingService.isLoading();
-    this.isLoading.subscribe((isLoading) =>
-      console.log('Is Loading:', isLoading)
-    );
+  }
+
+  ngAfterViewInit() {
+    this.isLoading.subscribe(() => {
+      this.cdRef.detectChanges();
+    });
   }
 }
-
-
-

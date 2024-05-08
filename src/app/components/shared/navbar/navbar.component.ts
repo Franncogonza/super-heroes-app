@@ -14,7 +14,6 @@ export class NavbarComponent {
   private router = inject(Router);
 
   searchHero(searchText: string) {
-    console.log(searchText);
     this.router.navigate(['/filter', searchText]);
   }
 }

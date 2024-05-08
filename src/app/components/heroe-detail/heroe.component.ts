@@ -9,14 +9,18 @@ import { Hero } from '../../schemas/hero.interface';
 })
 export class HeroeComponent implements OnInit {
   pageTitle = 'Heroe Detail';
-  errorMessage = '';
   heroe: Hero | undefined;
+  errorMessage = '';
 
   private activatedRoute = inject(ActivatedRoute);
   private router = inject(Router);
   private heroService = inject(HeroesService);
 
   ngOnInit(): void {
+    this.loadHero();
+  }
+
+  loadHero(): void {
     const id = Number(this.activatedRoute.snapshot.paramMap.get('id'));
     if (id) {
       this.getHeroe(id);
