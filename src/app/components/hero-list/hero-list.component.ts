@@ -1,13 +1,9 @@
-import {
-  Component,
-  OnDestroy,
-  OnInit,
-  inject,
-} from '@angular/core';
+import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { HeroesService } from '../../services/heroes.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Hero } from '../../schemas/hero.interface';
 import { Subscription } from 'rxjs/internal/Subscription';
+import { LoadingService } from '../../services/loading.service';
 
 @Component({
   selector: 'app-hero-list',
@@ -22,11 +18,20 @@ export class HeroListComponent implements OnInit, OnDestroy {
   heroesPerPage = 6;
   totalPages = 1;
   term: string = '';
+  isLoading: boolean = false;
+  private subscriptions = new Subscription();
 
   private heroService = inject(HeroesService);
   private router = inject(Router);
   private routeSub!: Subscription;
   private activatedRoute = inject(ActivatedRoute);
+
+  constructor(private loadingService: LoadingService) {
+    const sub = this.loadingService.isLoading().subscribe((state) => {
+      this.isLoading = state;
+    });
+    this.subscriptions.add(sub);
+  }
 
   ngOnInit(): void {
     this.loadHeroes();
@@ -59,7 +64,7 @@ export class HeroListComponent implements OnInit, OnDestroy {
       next: (heroes: Hero[]) => {
         this.heroes = heroes;
         this.totalPages = Math.ceil(heroes.length / this.heroesPerPage);
-        this.changePage(1); // Asegúrate de que se actualice la paginación
+        this.changePage(1);
       },
       error: (error) => console.error(error),
     });
@@ -97,17 +102,25 @@ export class HeroListComponent implements OnInit, OnDestroy {
 
   confirmDelete(): void {
     if (this.selectedHeroId != null) {
-      this.heroService.deleteHero(this.selectedHeroId).subscribe(() => {
-        const heroesAfterDelete = this.heroes.filter(
-          (hero: Hero) => hero.id !== this.selectedHeroId
-        );
-        this.heroes = heroesAfterDelete;
-        this.totalPages = Math.ceil(this.heroes.length / this.heroesPerPage);
-        if (this.currentPage > this.totalPages) {
-          this.currentPage = this.totalPages;
-        }
-        this.changePage(this.currentPage);
-        this.closeDeleteModal();
+      this.loadingService.show();
+      this.heroService.deleteHero(this.selectedHeroId).subscribe({
+        next: () => {
+          const heroesAfterDelete = this.heroes.filter(
+            (hero: Hero) => hero.id !== this.selectedHeroId
+          );
+          this.heroes = heroesAfterDelete;
+          this.totalPages = Math.ceil(this.heroes.length / this.heroesPerPage);
+          if (this.currentPage > this.totalPages) {
+            this.currentPage = this.totalPages;
+          }
+          this.changePage(this.currentPage);
+          this.closeDeleteModal();
+          this.loadingService.hide();
+        },
+        error: (error) => {
+          console.error('Error deleting hero:', error);
+          this.loadingService.hide();
+        },
       });
     }
   }
@@ -134,5 +147,6 @@ export class HeroListComponent implements OnInit, OnDestroy {
     if (this.routeSub) {
       this.routeSub.unsubscribe();
     }
+    this.subscriptions.unsubscribe();
   }
 }
