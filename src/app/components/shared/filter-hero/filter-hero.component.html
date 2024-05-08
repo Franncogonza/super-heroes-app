@@ -7,19 +7,24 @@
 
     <!-- Lista de héroes -->
     <div class="row">
-      <div *ngFor="let hero of heroes; let i = index" class="col-md-4 mb-3">
-        <div class="card">
+      <div
+        *ngFor="let hero of heroes; trackBy: trackByIndex; let i = index"
+        class="col-lg-4 col-md-6 col-12 mb-4 d-flex align-items-stretch"
+      >
+        <div class="card h-100 d-flex flex-column">
           <img
-            src="{{ hero.image }}"
-            class="card-img-top"
-            alt="Imagen de {{ hero.name }}"
+            [src]="hero?.image"
+            class="card-img-top img-fluid"
+            [alt]="hero?.name"
           />
-          <div class="card-body">
+          <div class="card-body d-flex flex-column">
             <h5 class="card-title">{{ hero.name }}</h5>
-            <p class="card-text">
+            <p class="card-text flex-grow-1">
               {{ hero.description || "No hay descripción disponible." }}
             </p>
-            <a class="btn btn-primary" (click)="goTo(hero)">Más detalles</a>
+            <a class="btn btn-primary mt-auto" (click)="goTo(hero)"
+              >Más detalles</a
+            >
           </div>
         </div>
       </div>

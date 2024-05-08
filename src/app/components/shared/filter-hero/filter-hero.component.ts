@@ -40,6 +40,10 @@ export class FilterHeroComponent implements OnInit, OnDestroy {
     this.router.navigate(['/heroe', heroe.id]);
   }
 
+  trackByIndex(index: number): number {
+    return index;
+  }
+
   ngOnDestroy(): void {
     if (this.routeSub) {
       this.routeSub.unsubscribe();

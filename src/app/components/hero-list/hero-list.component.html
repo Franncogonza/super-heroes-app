@@ -29,10 +29,12 @@
         class="col-lg-4 col-md-6 col-12 mb-4"
       >
         <div class="card h-100 d-flex flex-column">
-          <img [src]="heroe?.image" class="card-img-top" alt="heroe?.name" />
-          <div class="card-body d-flex flex-column">
+          <img [src]="heroe?.image" class="card-img-top" [alt]="heroe?.name" />
+          <div class="card-body">
             <h5 class="card-title">{{ heroe?.name }}</h5>
-            <p class="card-text">{{ heroe?.description }}</p>
+            <p class="card-text">
+              {{ heroe?.description || "No hay descripción disponible." }}
+            </p>
             <div class="mt-auto d-flex flex-wrap">
               <button
                 class="btn btn-primary me-md-2 mb-2 mb-md-0 flex-grow-1 m-2"
