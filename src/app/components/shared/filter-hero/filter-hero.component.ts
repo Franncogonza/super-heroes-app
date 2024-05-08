@@ -2,13 +2,14 @@ import { HeroesService } from './../../../services/heroes.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { Subscription } from 'rxjs/internal/Subscription';
+import { Hero } from '../../../schemas/hero.interface';
 
 @Component({
   selector: 'filter-hero',
   templateUrl: './filter-hero.component.html',
 })
 export class FilterHeroComponent implements OnInit, OnDestroy {
-  heroes: any[] = [];
+  heroes: Hero[] = [];
   term: string = '';
 
   private routeSub!: Subscription;
@@ -36,7 +37,7 @@ export class FilterHeroComponent implements OnInit, OnDestroy {
     });
   }
 
-  goTo(heroe: any): void {
+  goTo(heroe: Hero): void {
     this.router.navigate(['/heroe', heroe.id]);
   }
 

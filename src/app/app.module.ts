@@ -8,7 +8,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { HeroListComponent } from './components/hero-list/hero-list.component';
-import { HeroFormComponent } from './components/hero-form/hero-form.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { AddHeroComponent } from './components/add-hero/add-hero.component';
 import { EditHeroComponent } from './components/edit-hero/edit-hero.component';
@@ -24,7 +23,6 @@ import { FilterHeroComponent } from './components/shared/filter-hero/filter-hero
     AppComponent,
     HomeComponent,
     HeroListComponent,
-    HeroFormComponent,
     NavbarComponent,
     AddHeroComponent,
     EditHeroComponent,

@@ -44,7 +44,7 @@ export class HeroesService {
     );
   }
 
-  createHero(hero: any): Observable<any> {
+  createHero(hero: Hero): Observable<Hero> {
     hero.id = this.heroesCache.length + 1;
     this.heroesCache.push(hero);
     return new Observable((observer) => {
@@ -53,7 +53,7 @@ export class HeroesService {
     });
   }
 
-  updateHero(hero: any): Observable<any> {
+  updateHero(hero: Hero): Observable<Hero> {
     const index = this.heroesCache.findIndex((h) => h.id === hero.id);
     if (index > -1) {
       this.heroesCache[index] = hero;
@@ -64,7 +64,7 @@ export class HeroesService {
     });
   }
 
-  deleteHero(id: number): Observable<any> {
+  deleteHero(id: number): Observable<number> {
     this.heroesCache = this.heroesCache.filter((hero) => hero.id !== id);
     return new Observable((observer) => {
       observer.next(id);
@@ -72,7 +72,7 @@ export class HeroesService {
     });
   }
 
-  addHero(hero: any): Observable<any> {
+  addHero(hero: Hero): Observable<Hero> {
     const newHero = { ...hero, id: this.heroesCache.length + 1 };
     this.heroesCache.push(newHero);
     return new Observable((observer) => {
