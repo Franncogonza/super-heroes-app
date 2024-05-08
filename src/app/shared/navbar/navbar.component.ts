@@ -9,7 +9,10 @@ import { Router } from '@angular/router';
 export class NavbarComponent {
   private router = inject(Router);
 
-  searchHero(searchText: string) {
-    this.router.navigate(['/heroes', searchText]);
+  searchHero(event: Event, searchText: any) {
+    event.preventDefault();
+    const searchTerm = searchText.value;
+    searchText.value = '';
+    this.router.navigate(['/heroes', { term: searchTerm }]);
   }
 }
