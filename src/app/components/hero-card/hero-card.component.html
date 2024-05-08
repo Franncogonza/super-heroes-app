@@ -1,0 +1,29 @@
+<div class="card h-100 d-flex flex-column">
+  <img [src]="hero.image" class="card-img-top" [alt]="hero.name" />
+  <div class="card-body">
+    <h5 class="card-title">{{ hero.name }}</h5>
+    <p class="card-text">
+      {{ hero.description || "No hay descripción disponible." }}
+    </p>
+    <div class="mt-auto d-flex flex-wrap">
+      <button
+        class="btn btn-primary me-md-2 mb-2 mb-md-0 flex-grow-1 m-2"
+        (click)="goTo(hero)"
+      >
+        Ver
+      </button>
+      <button
+        class="btn btn-success me-md-2 mb-2 mb-md-0 flex-grow-1 m-2"
+        (click)="goToEditHero(hero)"
+      >
+        Editar
+      </button>
+      <button
+        class="btn btn-danger me-md-2 mb-2 mb-md-0 flex-grow-1 m-2"
+        (click)="openDeleteModal(hero)"
+      >
+        Borrar
+      </button>
+    </div>
+  </div>
+</div>
