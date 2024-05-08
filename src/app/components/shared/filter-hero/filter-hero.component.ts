@@ -22,6 +22,10 @@ export class FilterHeroComponent implements OnInit, OnDestroy {
       if (term) {
         this.term = term;
         this.searchHeroes(term);
+      } else {
+        this.heroesService
+          .getHeroes()
+          .subscribe((heroes) => (this.heroes = heroes));
       }
     });
   }
