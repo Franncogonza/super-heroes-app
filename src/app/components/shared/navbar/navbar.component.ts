@@ -1,5 +1,4 @@
 import { Component, inject } from '@angular/core';
-import { Hero } from '../../../schemas/hero.interface';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,12 +7,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
-  heroes: Hero[] = [];
-  filteredHeroes: Hero[] = [];
-
   private router = inject(Router);
 
   searchHero(searchText: string) {
-    this.router.navigate(['/filter', searchText]);
+    this.router.navigate(['/heroes', searchText]);
   }
 }
