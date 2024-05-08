@@ -52,11 +52,32 @@ export class HeroListComponent implements OnInit, OnDestroy {
   }
 
   searchHeroes(term: string): void {
-    this.heroService.searchHero(term).subscribe((heroes) => {
-      this.heroes = heroes;
-      this.totalPages = Math.ceil(heroes.length / this.heroesPerPage);
-      this.changePage(1);
+    this.heroService.searchHero(term).subscribe({
+      next: (heroes) => {
+        if (heroes.length > 0) {
+          this.heroes = heroes;
+          this.totalPages = Math.ceil(heroes.length / this.heroesPerPage);
+          this.changePage(1);
+        } else {
+          this.heroes = [];
+          this.paginatedHeroes = [];
+          this.totalPages = 0;
+          this.currentPage = 1;
+        }
+      },
+      error: (error) => {
+        console.error('Error searching heroes:', error);
+        this.heroes = [];
+        this.paginatedHeroes = [];
+        this.totalPages = 0;
+        this.currentPage = 1;
+      },
     });
+  }
+
+  clearFilter(): void {
+    this.term = '';
+    this.loadHeroes();
   }
 
   loadHeroes(): void {
