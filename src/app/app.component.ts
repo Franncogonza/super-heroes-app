@@ -1,6 +1,6 @@
 import { Component, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { LoadingService } from './services/loading.service';
+import { LoadingService } from './shared/services/loading.service';
 
 @Component({
   selector: 'app-root',

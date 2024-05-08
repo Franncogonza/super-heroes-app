@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
-import { HeroesService } from '../../services/heroes.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Hero } from '../../schemas/hero.interface';
 import { Subscription } from 'rxjs/internal/Subscription';
-import { LoadingService } from '../../services/loading.service';
+import { LoadingService } from '../../../shared/services/loading.service';
+import { HeroesService } from '../../services/heroes.service';
 
 @Component({
   selector: 'app-hero-list',

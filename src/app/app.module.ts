@@ -7,9 +7,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { LoadingInterceptor } from './interceptors/loading-interceptor.interceptor';
-import { HomeComponent } from './components/home/home.component';
+import { HomeComponent } from './heroes/components/home/home.component';
 import { HeroesModule } from './heroes/heroes.module';
-import { NavbarComponent } from './components/shared/navbar/navbar.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, NavbarComponent],

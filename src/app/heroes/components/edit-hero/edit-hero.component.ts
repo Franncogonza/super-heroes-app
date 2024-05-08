@@ -1,10 +1,10 @@
 import { Component, OnDestroy, OnInit, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { HeroesService } from '../../services/heroes.service';
-import { LoadingService } from '../../services/loading.service';
+import { LoadingService } from '../../../shared/services/loading.service';
 import { Subscription } from 'rxjs/internal/Subscription';
 import { finalize } from 'rxjs/internal/operators/finalize';
+import { HeroesService } from '../../services/heroes.service';
 
 @Component({
   selector: 'app-edit-hero',

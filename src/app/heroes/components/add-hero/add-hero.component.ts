@@ -1,9 +1,9 @@
 import { Component, OnDestroy, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HeroesService } from '../../services/heroes.service';
-import { LoadingService } from '../../services/loading.service';
+import { LoadingService } from '../../../shared/services/loading.service';
 import { Subscription } from 'rxjs/internal/Subscription';
+import { HeroesService } from '../../services/heroes.service';
 
 @Component({
   selector: 'app-add-hero',
