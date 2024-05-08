@@ -1,58 +1,59 @@
-<div class="container">
-  <div class="row">
-
-    <div class="container mt-3">
-      <!-- Mensaje indicando la cantidad de héroes encontrados -->
-      <div *ngIf="heroes.length > 0; else noHeroesTemplate">
-        <p class="alert alert-info">
-          Se han encontrado {{ heroes.length }} héroes.
-        </p>
-      </div>
-      <!-- Template alternativo cuando no hay héroes -->
-      <ng-template #noHeroesTemplate>
-        <div class="alert alert-warning">
-          No se encontraron héroes para el término '{{ term }}'.
+<ng-container *ngIf="!isLoading">
+  <div class="container">
+    <div class="row">
+      <div class="container mt-3">
+        <!-- Mensaje indicando la cantidad de héroes encontrados -->
+        <div *ngIf="heroes.length > 0; else noHeroesTemplate">
+          <p class="alert alert-info">
+            Se han encontrado {{ heroes.length }} héroes.
+          </p>
         </div>
-      </ng-template>
+        <!-- Template alternativo cuando no hay héroes -->
+        <ng-template #noHeroesTemplate>
+          <div class="alert alert-warning">
+            No se encontraron héroes para el término '{{ term }}'.
+          </div>
+        </ng-template>
+      </div>
+
+      <div class="col-12 text-center pt-3 pb-3">
+        <button class="btn btn-success" (click)="showAddHero()">
+          Añadir Nuevo Héroe
+        </button>
+      </div>
+
+      <!-- Lista de héroes -->
+      <div class="row">
+        <div
+          *ngFor="
+            let heroe of paginatedHeroes;
+            trackBy: trackByIndex;
+            let i = index
+          "
+          class="col-lg-4 col-md-6 col-12 mb-4"
+        >
+          <hero-card
+            [hero]="heroe"
+            (viewHero)="handleViewHero($event)"
+            (editHero)="handleEditHero($event)"
+            (deleteHero)="handleDeleteHero($event)"
+          ></hero-card>
+        </div>
+      </div>
     </div>
 
-    <div class="col-12 text-center pt-3 pb-3">
-      <button class="btn btn-success" (click)="showAddHero()">
-        Añadir Nuevo Héroe
+    <!-- btn volver -->
+    <div class="card-footer mt-3 text-center">
+      <button
+        class="btn btn-outline-secondary"
+        style="min-width: 100px"
+        (click)="onBack()"
+      >
+        Back
       </button>
     </div>
-
-    <!-- Lista de héroes -->
-    <div class="row">
-      <div
-        *ngFor="
-          let heroe of paginatedHeroes;
-          trackBy: trackByIndex;
-          let i = index
-        "
-        class="col-lg-4 col-md-6 col-12 mb-4"
-      >
-        <hero-card
-          [hero]="heroe"
-          (viewHero)="handleViewHero($event)"
-          (editHero)="handleEditHero($event)"
-          (deleteHero)="handleDeleteHero($event)"
-        ></hero-card>
-      </div>
-    </div>
   </div>
-
-  <!-- btn volver -->
-  <div class="card-footer mt-3 text-center">
-    <button
-      class="btn btn-outline-secondary"
-      style="min-width: 100px"
-      (click)="onBack()"
-    >
-      Back
-    </button>
-  </div>
-</div>
+</ng-container>
 
 <!-- Modal de confirmación -->
 <app-confirm-modal

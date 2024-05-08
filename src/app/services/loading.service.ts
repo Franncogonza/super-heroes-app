@@ -7,6 +7,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 export class LoadingService {
   private loadingCount = 0;
   private loadingSubject = new BehaviorSubject<boolean>(false);
+  private minimumDisplayTime = 500;
 
   constructor() {}
 
@@ -18,7 +19,9 @@ export class LoadingService {
 
   hide(): void {
     if (--this.loadingCount === 0) {
-      this.loadingSubject.next(false);
+      setTimeout(() => {
+        this.loadingSubject.next(false);
+      }, this.minimumDisplayTime);
     }
   }
 
