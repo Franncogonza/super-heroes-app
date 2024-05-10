@@ -11,6 +11,7 @@ import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.
 import { UppercaseDirective } from '../directives/uppercase.directive';
 import { HttpClientModule } from '@angular/common/http';
 import { HeroHeaderComponent } from './components/hero-header/hero-header.component';
+import { HeroPaginatorComponent } from './components/hero-paginator/hero-paginator.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { HeroHeaderComponent } from './components/hero-header/hero-header.compon
     HeroeComponent,
     HeroCardComponent,
     HeroHeaderComponent,
+    HeroPaginatorComponent,
   ],
   imports: [
     CommonModule,
