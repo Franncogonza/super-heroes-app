@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { LoadingInterceptor } from './interceptors/loading-interceptor.interceptor';
-import { HomeComponent } from './heroes/components/home/home.component';
+import { HomeComponent } from './home/home.component';
 import { HeroesModule } from './heroes/heroes.module';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 

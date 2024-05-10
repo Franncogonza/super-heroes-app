@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { LoadingService } from './../shared/services/loading.service';
+import { Injectable, inject } from '@angular/core';
 import {
   HttpEvent,
   HttpInterceptor,
@@ -7,11 +8,10 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
-import { LoadingService } from '../shared/services/loading.service';
 
 @Injectable()
 export class LoadingInterceptor implements HttpInterceptor {
-  constructor(private loadingService: LoadingService) {}
+  private loadingService = inject(LoadingService);
 
   intercept(
     request: HttpRequest<any>,
