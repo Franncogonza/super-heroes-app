@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Hero } from '../schemas/hero.interface';
+import { of } from 'rxjs/internal/observable/of';
 
 @Injectable({
   providedIn: 'root',
@@ -10,6 +11,7 @@ import { Hero } from '../schemas/hero.interface';
 export class HeroesService {
   private apiUrl = 'assets/heroes.json';
   private heroesCache!: Hero[];
+  private heroId: number | undefined;
   private http = inject(HttpClient);
 
   getHeroes(): Observable<Hero[]> {
@@ -27,15 +29,12 @@ export class HeroesService {
       );
     }
   }
+  setHeroId(id: number): void {
+    this.heroId = id;
+  }
 
-  searchHero(term: string): Observable<Hero[]> {
-    return this.getHeroes().pipe(
-      map((heroes) =>
-        heroes.filter((hero) =>
-          hero.name.toLowerCase().includes(term.toLowerCase())
-        )
-      )
-    );
+  getHeroId(): number | undefined {
+    return this.heroId;
   }
 
   getHero(id: number): Observable<Hero | undefined> {
@@ -44,13 +43,10 @@ export class HeroesService {
     );
   }
 
-  createHero(hero: Hero): Observable<Hero> {
-    hero.id = this.heroesCache.length + 1;
-    this.heroesCache.push(hero);
-    return new Observable((observer) => {
-      observer.next(hero);
-      observer.complete();
-    });
+  addHero(hero: Hero): Observable<Hero> {
+    const newHero = { ...hero, id: this.heroesCache.length + 1 };
+    this.heroesCache.push(newHero);
+    return of(hero);
   }
 
   updateHero(hero: Hero): Observable<Hero> {
@@ -58,10 +54,7 @@ export class HeroesService {
     if (index > -1) {
       this.heroesCache[index] = hero;
     }
-    return new Observable((observer) => {
-      observer.next(hero);
-      observer.complete();
-    });
+    return of(hero);
   }
 
   deleteHero(id: number): Observable<number> {
@@ -72,12 +65,13 @@ export class HeroesService {
     });
   }
 
-  addHero(hero: Hero): Observable<Hero> {
-    const newHero = { ...hero, id: this.heroesCache.length + 1 };
-    this.heroesCache.push(newHero);
-    return new Observable((observer) => {
-      observer.next(newHero);
-      observer.complete();
-    });
+  searchHero(term: string): Observable<Hero[]> {
+    return this.getHeroes().pipe(
+      map((heroes) =>
+        heroes.filter((hero) =>
+          hero.name.toLowerCase().includes(term.toLowerCase())
+        )
+      )
+    );
   }
 }

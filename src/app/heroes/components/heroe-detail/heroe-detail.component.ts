@@ -1,18 +1,17 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Hero } from '../../schemas/hero.interface';
 import { HeroesService } from '../../services/heroes.service';
 
 @Component({
-  selector: 'app-heroe',
-  templateUrl: './heroe.component.html',
+  selector: 'heroe-detail',
+  templateUrl: './heroe-detail.component.html',
 })
-export class HeroeComponent implements OnInit {
+export class HeroeDetailComponent implements OnInit {
   pageTitle = 'Heroe Detail';
   heroe: Hero | undefined;
   errorMessage = '';
 
-  private activatedRoute = inject(ActivatedRoute);
   private router = inject(Router);
   private heroService = inject(HeroesService);
 
@@ -21,7 +20,7 @@ export class HeroeComponent implements OnInit {
   }
 
   loadHero(): void {
-    const id = Number(this.activatedRoute.snapshot.paramMap.get('id'));
+    const id = this.heroService.getHeroId();
     if (id) {
       this.getHeroe(id);
     }
