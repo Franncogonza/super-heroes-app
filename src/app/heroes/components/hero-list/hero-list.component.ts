@@ -96,8 +96,10 @@ export class HeroListComponent implements OnInit, OnDestroy {
     this.router.navigate(['heroes/add']);
   }
 
-  handleViewHero(heroe: Hero): void {
-    this.router.navigate(['/heroes', heroe.id]);
+  handleViewHero(hero: Hero): void {
+    const heroNameSlug = this.convertToSlug(hero.name);
+    this.heroService.setHeroId(hero.id);
+    this.router.navigate(['/heroes', heroNameSlug]);
   }
 
   handleEditHero(heroe: Hero): void {
@@ -155,6 +157,13 @@ export class HeroListComponent implements OnInit, OnDestroy {
 
   onBack(): void {
     this.router.navigate(['/home']);
+  }
+
+  convertToSlug(text: string): string {
+    return text
+      .toLowerCase()
+      .replace(/ /g, '-')
+      .replace(/[^\w-]+/g, '');
   }
 
   trackByIndex(index: number): number {

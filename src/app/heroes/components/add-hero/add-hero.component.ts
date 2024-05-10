@@ -27,18 +27,20 @@ export class AddHeroComponent implements OnDestroy {
 
   addHero(): void {
     if (this.heroForm.valid) {
+      this.loadingService.show();
       this.subscriptions.add(
-        this.heroService.createHero(this.heroForm.value).subscribe({
+        this.heroService.addHero(this.heroForm.value).subscribe({
           next: () => {
+            this.loadingService.hide();
             this.router.navigate(['/heroes']);
-            this.loadingService.show();
-            return void 0;
           },
-          error: (err) => console.error('Error creating hero:', err),
+          error: (err) => {
+            console.error('Error creating hero:', err);
+            this.loadingService.hide();
+          },
         })
       );
     }
-    this.loadingService.hide();
   }
 
   onBack(): void {

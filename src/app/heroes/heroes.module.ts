@@ -6,7 +6,7 @@ import { AddHeroComponent } from './components/add-hero/add-hero.component';
 import { EditHeroComponent } from './components/edit-hero/edit-hero.component';
 import { HeroCardComponent } from './components/hero-card/hero-card.component';
 import { HeroListComponent } from './components/hero-list/hero-list.component';
-import { HeroeComponent } from './components/heroe-detail/heroe.component';
+import { HeroeDetailComponent } from './components/heroe-detail/heroe-detail.component';
 import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
 import { UppercaseDirective } from '../directives/uppercase.directive';
 import { HttpClientModule } from '@angular/common/http';
@@ -20,7 +20,7 @@ import { HeroPaginatorComponent } from './components/hero-paginator/hero-paginat
     EditHeroComponent,
     ConfirmModalComponent,
     UppercaseDirective,
-    HeroeComponent,
+    HeroeDetailComponent,
     HeroCardComponent,
     HeroHeaderComponent,
     HeroPaginatorComponent,
