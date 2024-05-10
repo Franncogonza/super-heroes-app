@@ -1,0 +1,25 @@
+<div class="container mt-3">
+  <div class="col-12 text-center pt-2 pb-3">
+    <!-- agregar un heroe-->
+    <button
+      class="btn btn-success"
+      style="margin-right: 2rem"
+      (click)="showAddHero()"
+    >
+      Crear Héroe
+    </button>
+    <!-- limpiar el filtro -->
+    <button class="btn btn-success" (click)="clearFilter()">Limpiar</button>
+  </div>
+  <!-- Mensaje héroes -->
+  <div *ngIf="heroes.length > 0; else noHeroesTemplate">
+    <p class="alert alert-info">
+      Se han encontrado {{ heroes.length }} héroes.
+    </p>
+  </div>
+  <ng-template #noHeroesTemplate>
+    <div class="alert alert-warning">
+      No se encontraron héroes para el término '{{ term }}'.
+    </div>
+  </ng-template>
+</div>
