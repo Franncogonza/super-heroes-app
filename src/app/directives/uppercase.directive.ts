@@ -1,13 +1,19 @@
-import { Directive, HostListener, ElementRef, OnInit } from '@angular/core';
+import {
+  Directive,
+  HostListener,
+  ElementRef,
+  OnInit,
+  inject,
+} from '@angular/core';
 import { NgControl } from '@angular/forms';
 
 @Directive({
   selector: '[appUppercase]',
 })
 export class UppercaseDirective implements OnInit {
-  constructor(private el: ElementRef, private control: NgControl) {}
+  private control = inject(NgControl);
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.transformToUppercase();
   }
 
@@ -19,7 +25,7 @@ export class UppercaseDirective implements OnInit {
     this.transformToUppercase();
   }
 
-  private transformToUppercase() {
+  private transformToUppercase(): void {
     const value = this.control.value;
     this.control.control?.setValue(value.toUpperCase());
   }
