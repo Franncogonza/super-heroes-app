@@ -143,7 +143,7 @@ export class HeroListComponent implements OnInit, OnDestroy {
     }
   }
 
-  changePage(page: number): void {
+  changePage(page: any): void {
     if (page < 1 || page > this.totalPages) {
       return;
     }
