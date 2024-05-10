@@ -10,6 +10,7 @@ import { HeroeComponent } from './components/heroe-detail/heroe.component';
 import { ConfirmModalComponent } from './components/confirm-modal/confirm-modal.component';
 import { UppercaseDirective } from '../directives/uppercase.directive';
 import { HttpClientModule } from '@angular/common/http';
+import { HeroHeaderComponent } from './components/hero-header/hero-header.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     UppercaseDirective,
     HeroeComponent,
     HeroCardComponent,
+    HeroHeaderComponent,
   ],
   imports: [
     CommonModule,
