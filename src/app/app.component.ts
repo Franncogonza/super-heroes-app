@@ -1,6 +1,7 @@
 import { Component, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LoadingService } from './shared/services/loading.service';
+import { NavItem } from './shared/navbar/schemas/nav-item-interface';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,13 @@ import { LoadingService } from './shared/services/loading.service';
 })
 export class AppComponent implements AfterViewInit {
   isLoading: Observable<boolean>;
+
+  appTitle = 'Heroes App';
+  searchPlaceholder = 'Buscar Heroe';
+  navItems: NavItem[] = [
+    { name: 'Home', link: '/home', active: false },
+    { name: 'Heroes List', link: '/heroes', active: false },
+  ];
 
   constructor(
     private loadingService: LoadingService,

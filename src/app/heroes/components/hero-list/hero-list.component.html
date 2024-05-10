@@ -62,12 +62,14 @@
 </ng-container>
 
 <!-- Modal de confirmación -->
-<app-confirm-modal
-  class="mt-3"
-  *ngIf="showModal"
-  (onConfirm)="confirmDelete()"
-  (onClose)="closeDeleteModal()"
-></app-confirm-modal>
+<ng-container *ngIf="showModal">
+  <confirm-modal
+    class="mt-3"
+    [modalText]="modalText"
+    (onConfirm)="confirmDelete()"
+    (onClose)="closeDeleteModal()"
+  ></confirm-modal>
+</ng-container>
 
 <!-- Paginación -->
 <ng-container *ngIf="!isLoading">

@@ -1,9 +1,13 @@
-  <div class="container">
-    <div class="sticky-navbar">
-      <app-navbar></app-navbar>
-    </div>
-    <router-outlet></router-outlet>
+<div class="container">
+  <div class="sticky-navbar">
+    <app-navbar
+      [navItems]="navItems"
+      [searchPlaceholder]="searchPlaceholder"
+      [title]="appTitle"
+    ></app-navbar>
   </div>
+  <router-outlet></router-outlet>
+</div>
 <ng-container *ngIf="isLoading | async">
   <div class="d-flex justify-content-center">
     <div class="spinner-border" role="status"></div>

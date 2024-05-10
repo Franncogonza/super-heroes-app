@@ -13,6 +13,7 @@ export class HeroListComponent implements OnInit, OnDestroy {
   heroes: Hero[] = [];
   showModal = false;
   selectedHeroId: number | null = null;
+  modalText: string = '';
   paginatedHeroes: Hero[] = [];
   currentPage = 1;
   heroesPerPage = 6;
@@ -104,11 +105,12 @@ export class HeroListComponent implements OnInit, OnDestroy {
   }
 
   handleDeleteHero(heroe: Hero): void {
-    this.openDeleteModal(heroe.id);
+    this.openDeleteModal(heroe.id, heroe.name);
   }
 
-  openDeleteModal(id: number): void {
-    this.selectedHeroId = id;
+  openDeleteModal(heroId: number, heroName: string): void {
+    this.selectedHeroId = heroId;
+    this.modalText = `¿Estás seguro de que deseas eliminar a ${heroName}?`;
     this.showModal = true;
   }
 

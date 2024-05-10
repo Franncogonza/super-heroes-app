@@ -1,5 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { NavItem } from './schemas/nav-item-interface';
 
 @Component({
   selector: 'app-navbar',
@@ -7,6 +8,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
+  @Input() searchPlaceholder = 'Search Hero';
+  @Input() title = 'Tour of Heroes';
+  @Input() navItems!: NavItem[];
+
   private router = inject(Router);
 
   searchHero(event: Event, searchText: any) {
